@@ -30,3 +30,32 @@ int print_ascii(level_t level) {
     fclose(fp);
     return 0;
 }
+
+void prompt(level_t level,int loss_count) {
+    int response;
+    printf("%s\n",level.prompt_p);
+    scanf("%d",&response);
+    if (loss_count ==2) {
+        printf("You LOSE!\n");
+        exit(0);
+    }
+    else if (response==1){
+        printf("Correct!\n");
+    }
+    else if (response==2){
+        printf("Incorrect\n");
+        prompt(level,loss_count+1);
+    }
+    else if (response==3){
+        printf("Incorrect\n");
+        prompt(level,loss_count+1);
+    }
+    else if (response==4){
+        printf("Incorrect\n");
+        prompt(level,loss_count+1);
+    }
+    else {
+        printf("Don't spit that Jibbrish at me!\n");
+        prompt(level,loss_count);
+    }
+}

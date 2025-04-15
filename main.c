@@ -25,15 +25,15 @@ int main(int argc, char *argv[])
     // status = print_ascii(two);
     // printf("Print ascii exit code: %d\n",status);
 
-    
     char *intro_l3 = "Well look-ey here, a newcomer! eheheh!\nAs dazed as they come!\nA word of advice, give the gaurds what they ask for and you'll make it to tommorow.\n";
     char *prompt_l3 = "[1] Who are you?\n[2] How do I get out of here?\n";
 
     level_t three= new_level("levels/suspicious_man.txt",intro_l3,prompt_l3,3);
     status = print_ascii(three);
     printf("%s\n",intro_l3);
-    printf("%s\n",prompt_l3);
-
+    // printf("%s\n",prompt_l3);
+    char *input_l3;
+    prompt(three,0);
 
 
     return 0;
