@@ -7,7 +7,8 @@ int main(int argc, char *argv[])
     // level_t one = {0};
     char *intro_l1 = "You wake up to the sensation of cold and wet concrete.\nAs you collect yourself, you note this small concrete room is filled hot stale air.\nThere is no exit, only a small window covered in metal bars.\nIt seems you are in a jail cell, and boy is it dank.\n";
     char *prompt_l1 = "Press Enter to standup.\n";
-    level_t one = new_level("levels/jail_bars.txt",intro_l1,prompt_l1,1);
+    // level_t one = new_level("levels/jail_bars.txt",intro_l1,prompt_l1,1);
+    level_t one = new_level("levels/big_bricks_with_bars_2.txt",intro_l1,prompt_l1,1);
 
     printf("\n%s\n",intro_l1);
     int status = print_ascii(one);
