@@ -1,5 +1,7 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "level.h"
+#include "utils.c"
 // implementation
 
 level_t new_level(char *ascii_path, char *intro_p, char *prompt_p, int num) {
@@ -12,24 +14,6 @@ level_t new_level(char *ascii_path, char *intro_p, char *prompt_p, int num) {
     return level;
 }
 
-int print_ascii(level_t level) {
-    FILE *fp;
-    char buffer[100];
-
-    fp = fopen(level.ascii_path,"r");
-
-    if (fp==NULL){
-        printf("Could not find file");
-        return 1;
-    }
-
-    while(fgets(buffer,sizeof(buffer),fp) != NULL){
-        printf("%s",buffer);
-    }
-
-    fclose(fp);
-    return 0;
-}
 
 void prompt(level_t level,int loss_count) {
     int response;
