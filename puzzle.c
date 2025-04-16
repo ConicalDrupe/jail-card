@@ -25,13 +25,31 @@ puzzle_t create_puzzle(char *question,char *art_path, char *options[4], char *an
 }
 
 void play_puzzle(puzzle_t Puzzle) {
+    int number_of_attempts = 0;
+
     if (Puzzle.art_path != NULL) {
         print_art(Puzzle.art_path);
+        printf("\n");
     }
-    // else if () {
-    //
-    // }
-    // else {
-    //
-    // }
+
+    while (1) {
+    printf("%s\n",Puzzle.question);
+    for (int i = 0; i<Puzzle.opt_n;i++){
+        printf("%s",Puzzle.options[i]);
+        }
+
+    char *user_response;
+    scanf("%s",user_response);
+    if (user_response==Puzzle.answer) {
+
+        }
+    else if (number_of_attempts==2) {
+            printf("Too bad, You DIED!\n");
+            // display death screen
+            exit(0);
+        }
+    else {
+        number_of_attempts++;
+        }
+    }
 };
