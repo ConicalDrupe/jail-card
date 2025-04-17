@@ -70,7 +70,10 @@ int main(int argc, char *argv[])
     // char *input_l3;
     // prompt(three,0);
 
-    // puzzle_t p1 = create_puzzle(intro_l3,"",'1',)
+    char *opts[4] = {"Ace","Jack","Queen","King"};
+    puzzle_t p1 = create_puzzle("Pick a card, pick any card...","levels/first_card_game.txt","Queen",4,opts);
+    play_puzzle(p1);
+
 
     return 0;
 }

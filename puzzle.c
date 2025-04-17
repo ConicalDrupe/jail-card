@@ -9,7 +9,7 @@ typedef struct Puzzle {
     char *options[4]; //array of 4 pointers, that each point to the beggining of an string (array of chars)
 } puzzle_t;
 
-puzzle_t create_puzzle(char *question,char *art_path, char *options[4], char *answer, int opt_n) {
+puzzle_t create_puzzle(char *question,char *art_path,  char *answer, int opt_n,char *options[4]) {
     puzzle_t new_puzzle;
     new_puzzle.question = question;
     new_puzzle.art_path = art_path;
