@@ -43,7 +43,10 @@ void play_prompt(prompt_t prompt) {
 
     for (int i = 0; i<prompt.opt_n;i++){
         printf("[%d] ",i+1);
-        printf("%s\n",prompt.options[i]);
+        // printf("%s\n",prompt.options[i]);
+        printf("Array: %s\n",prompt.options[i]);
+        printf("\tPointer Math: %s\n",*(prompt.options+i));
+        // printf
         }
 
     // get user input
@@ -79,10 +82,14 @@ int main(int argc, char *argv[])
     char *a = "2";//"Mint";
     int o_n = 4;
     char *opts[] = {"Vanilla","Mint","Strawberry","Chocolate"};
-
-    // printf("%s\n",p1.options[0]);
+    // printf("%s\n",p0.options[0]);
 
     prompt_t p1 = create_prompt(art,q,a,o_n,opts);
+
+    for (int j =0;j<o_n;j++) {
+        printf("%s\n",p1.options[j]);
+    }
+
     play_prompt(p1);
 
     return 0;
