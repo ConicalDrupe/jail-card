@@ -1,5 +1,5 @@
 #!/bin/bash
 
 clear
-gcc main.c
-./a.out
+gcc main.c -g -o main
+./main
