@@ -29,16 +29,16 @@ prompt_t create_prompt(char *art_path, char *question, char *answer, int opt_n,c
 }
 
 void play_prompt(prompt_t prompt) {
-    char buffer[2];
     int number_of_attempts = 0;
 
-    if (prompt.art_path != NULL) {
-        print_art(prompt.art_path);
-        printf("\n");
-    }
+    // if (prompt.art_path != NULL) {
+    //     print_art(prompt.art_path);
+    //     printf("\n");
+    // }
 
-    while (1) {
+    do {
     // Print Question and Options
+    printf("Attempt number: %d\n",number_of_attempts);
     printf("%s\n",prompt.question);
 
     for (int i = 0; i<prompt.opt_n;i++){
@@ -50,7 +50,10 @@ void play_prompt(prompt_t prompt) {
         }
 
     // get user input
-    fgets(buffer,sizeof(buffer),stdin);
+    char buffer[2];
+    // fgets(buffer,sizeof(buffer),stdin);
+    scanf("%s",buffer);
+
 
     int success = strcmp(buffer,prompt.answer);
     // printf("string Comparison result: %d",success);
@@ -71,7 +74,7 @@ void play_prompt(prompt_t prompt) {
         number_of_attempts++;
         continue;
         }
-    }
+    } while (1);
 };
 
 
