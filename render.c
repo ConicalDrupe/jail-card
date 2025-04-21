@@ -8,11 +8,11 @@ typedef struct Card {
 } card_t;
 
 // Essentially a card Factory
-card_t createCard(char name) {
+card_t createCard(int value) {
     card_t card;
 
-    if (name=='2') {
-        card.value = 2;
+    if (value==1) {
+        card.value = 1;
         card.name = '2';
 
         strcpy(card.art[0],"+-----+");
@@ -23,8 +23,8 @@ card_t createCard(char name) {
         strcpy(card.art[5],"+-----+");
         return card;
     }
-    else if (name=='3') {
-        card.value = 3;
+    else if (value==2) {
+        card.value = 2;
         card.name = '3';
 
         strcpy(card.art[0],"+-----+");
@@ -35,8 +35,8 @@ card_t createCard(char name) {
         strcpy(card.art[5],"+-----+");
         return card;
     }
-    else if (name=='4') {
-        card.value = 4;
+    else if (value==3) {
+        card.value = 3;
         card.name = '4';
 
         strcpy(card.art[0],"+-----+");
@@ -47,8 +47,8 @@ card_t createCard(char name) {
         strcpy(card.art[5],"+-----+");
         return card;
     }
-    else if (name=='5') {
-        card.value = 5;
+    else if (value==4) {
+        card.value = 4;
         card.name = '5';
 
         strcpy(card.art[0],"+-----+");
@@ -59,8 +59,8 @@ card_t createCard(char name) {
         strcpy(card.art[5],"+-----+");
         return card;
     }
-    else if (name=='A') {
-        card.value = 14;
+    else if (value==0) {
+        card.value = 0;
         card.name = 'A';
 
         strcpy(card.art[0],"+-----+");
@@ -71,8 +71,8 @@ card_t createCard(char name) {
         strcpy(card.art[5],"+-----+");
         return card;
     }
-    else if (name=='J') {
-        card.value = 11;
+    else if (value==5) {
+        card.value = 5;
         card.name = 'J';
 
         strcpy(card.art[0],"+-----+");
@@ -83,8 +83,8 @@ card_t createCard(char name) {
         strcpy(card.art[5],"+-----+");
         return card;
     }
-    else if (name=='Q') {
-        card.value = 12;
+    else if (value==6) {
+        card.value = 6;
         card.name = 'Q';
 
         strcpy(card.art[0],"+-----+");
@@ -95,8 +95,8 @@ card_t createCard(char name) {
         strcpy(card.art[5],"+-----+");
         return card;
     }
-    else if (name=='K') {
-        card.value = 12;
+    else if (value==7) {
+        card.value = 7;
         card.name = 'K';
 
         strcpy(card.art[0],"+-----+");
@@ -107,8 +107,20 @@ card_t createCard(char name) {
         strcpy(card.art[5],"+-----+");
         return card;
     }
+    else if (value==100) {
+        card.value = 0;
+        card.name = '?';
+
+        strcpy(card.art[0],"+-----+");
+        strcpy(card.art[1],"|?    |");
+        strcpy(card.art[2],"|     |");
+        strcpy(card.art[3],"|     |");
+        strcpy(card.art[4],"|    ?|");
+        strcpy(card.art[5],"+-----+");
+        return card;
+    }
     else {
-        printf("Not valid char %c\n",name);
+        printf("Not valid value map %d\n",value);
     }
 
     return card;
@@ -144,17 +156,17 @@ void renderCards(card_t cards_arry[], int num_of_cards, int prompt_flag) {
 }
 
 
-int main()
-{
-    card_t Two = createCard('2');
-    card_t Ace = createCard('A');
-    card_t Queen = createCard('Q');
-    card_t King = createCard('K');
-    card_t Jack = createCard('J');
-    // for (int i=0;i< 6;i++) {
-    //     printf("%s\n",two.art[i]);
-    // }
-    card_t current_cards[5] = {Two,Ace,Queen,King,Jack};
-    renderCards(current_cards,5,1);
-    return 0;
-}
+// int main()
+// {
+//     card_t Two = createCard(2);
+//     card_t Ace = createCard(14);
+//     card_t Queen = createCard(12);
+//     card_t King = createCard(13);
+//     card_t Jack = createCard(11);
+//     // for (int i=0;i< 6;i++) {
+//     //     printf("%s\n",two.art[i]);
+//     // }
+//     card_t current_cards[5] = {Two,Ace,Queen,King,Jack};
+//     renderCards(current_cards,5,1);
+//     return 0;
+// }

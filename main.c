@@ -4,7 +4,6 @@
 #include "render.c"
 
 
-
 int main(int argc, char *argv[])
 {
     char *press_enter_1;
@@ -70,7 +69,57 @@ int main(int argc, char *argv[])
     };
 
     // Game 1
-    // What is the proper abstraction. Puzzle, prompt?
+    // What is the proper abstraction.
+    /*
+     1) Render 5 Cards (only show 2)
+     2) (reference character inventory, enemy inventory)
+     3) (c)all or (f)old [A.k.a continue or fold and loose currency/card]
+     4) Show new card (show 3 total, 2 unknown). Show 1 of adversaries
+     5) (c)all or (f)old
+     6) calculate best score (straight, pairs, triples)
+     7) Declare winner
+     8) Loose card, or gain card
+     9) if no cards left, player dies
+    */
+
+    // 1.a) Generate hand and render
+    card_t generateCard(void) {
+        int rand_num = rand() % 8;
+        card_t new_card = createCard(rand_num);
+        return new_card;
+    }
+
+    card_t hand[5];
+    for (int i=0;i<5;i++){
+        hand[i] = generateCard();
+    }
+
+
+    // 1.b) Render Hand, only showing 3
+    card_t flop[5];
+    flop[0] = hand[0];
+    flop[1] = hand[1];
+    flop[2] = hand[2];
+    flop[3] = createCard(100);
+    flop[4] = createCard(100);
+    renderCards(flop,5,0);
+
+    printf("\n");
+    //render player inventory
+    //player.n_cards | type: cards_t []
+    //player.cards[]
+    //for (inti=0;i<player.n_cards;i++){
+    //printf("Inventory:\n")
+    //renderCards(player.cards,n_cards);
+    //}
+
+    // Prompt player to call or fold
+    // call -10 coins, fold (lose a card)
+    char c_buffer[2];
+    printf("\t[c]all (-5 coins)\n");
+    printf("\t[f]old (forfiet and -20 coins or a card)\n");
+    scanf("%s",c_buffer);
+
     while (1) {
 
     }
