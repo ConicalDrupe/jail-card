@@ -1,0 +1,24 @@
+
+My first attempt played like a multiple choice test, where the game play was highly linear and soley based on the graphics/dialogue the  game provided.
+
+Part of a good text game is solving a puzzle. But that begs the question, what makes a good puzzle?
+Here are some things I learned along the way.
+
+# Mechanics
+- Controls menu. Player interactability/interactive experience (UX design).
+- 1,2,3,4
+- call, hold
+- matching pairs (scoring system)
+
+Texas Hold E'm
+Straight 1234
+Use this card. (Gain card to use at any time)
+- call or fold.(lose your card)
+- on loss you lose a card.all
+
+# Card Renderer
+show player inventory
+space to cut screen (text printing).
+
+## Control Menu
+    Hide controls \hide control. option
