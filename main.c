@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include "level.c"
-#include "puzzle.c"
-//640x480
-//
+#include "prompt.c"
+#include "render.c"
+
+
 
 int main(int argc, char *argv[])
 {
     char *press_enter_1;
-
     char *intro_l1 = "You wake up to the sensation of cold and wet concrete.\nAs you collect yourself, you note this small concrete room is filled hot stale air.\nThere is no exit, only a small window covered in metal bars.\nIt seems you are in a jail cell, and boy is it dank.\n";
     char *prompt_l1 = "Press Enter to standup.\n";
     level_t one = new_level("levels/big_bricks_with_bars_2.txt",intro_l1,prompt_l1,1);
@@ -39,6 +39,8 @@ int main(int argc, char *argv[])
     int number_of_tries = 0;
     int input_1 = 0;
     int input_2 = 0;
+
+    // Intro Mysterious Man 
     while (1) {
         printf("\n%s\n",prompt_l3);
         int user_response;
@@ -66,13 +68,12 @@ int main(int argc, char *argv[])
             continue;
         }
     };
-    // printf("%s\n",prompt_l3);
-    // char *input_l3;
-    // prompt(three,0);
 
-    char *opts[4] = {"Ace","Jack","Queen","King"};
-    puzzle_t p1 = create_puzzle("Pick a card, pick any card...","levels/first_card_game.txt","Queen",4,opts);
-    play_puzzle(p1);
+    // Game 1
+    // What is the proper abstraction. Puzzle, prompt?
+    while (1) {
+
+    }
 
 
     return 0;
