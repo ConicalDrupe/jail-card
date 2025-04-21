@@ -144,17 +144,17 @@ void renderCards(card_t cards_arry[], int num_of_cards, int prompt_flag) {
 }
 
 
-int main()
-{
-    card_t Two = createCard('2');
-    card_t Ace = createCard('A');
-    card_t Queen = createCard('Q');
-    card_t King = createCard('K');
-    card_t Jack = createCard('J');
-    // for (int i=0;i< 6;i++) {
-    //     printf("%s\n",two.art[i]);
-    // }
-    card_t current_cards[5] = {Two,Ace,Queen,King,Jack};
-    renderCards(current_cards,5,1);
-    return 0;
-}
+// int main()
+// {
+//     card_t Two = createCard('2');
+//     card_t Ace = createCard('A');
+//     card_t Queen = createCard('Q');
+//     card_t King = createCard('K');
+//     card_t Jack = createCard('J');
+//     // for (int i=0;i< 6;i++) {
+//     //     printf("%s\n",two.art[i]);
+//     // }
+//     card_t current_cards[5] = {Two,Ace,Queen,King,Jack};
+//     renderCards(current_cards,5,1);
+//     return 0;
+// }

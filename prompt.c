@@ -78,22 +78,22 @@ void play_prompt(prompt_t prompt) {
 };
 
 
-int main(int argc, char *argv[])
-{
-    char *q = "What is your fav icecream flavor?";
-    char *art = "levels/man_2.txt";
-    char *a = "2";//"Mint";
-    int o_n = 4;
-    char *opts[] = {"Vanilla","Mint","Strawberry","Chocolate"};
-    // printf("%s\n",p0.options[0]);
-
-    prompt_t p1 = create_prompt(art,q,a,o_n,opts);
-
-    for (int j =0;j<o_n;j++) {
-        printf("%s\n",p1.options[j]);
-    }
-
-    play_prompt(p1);
-
-    return 0;
-}
+// int main(int argc, char *argv[])
+// {
+//     char *q = "What is your fav icecream flavor?";
+//     char *art = "levels/man_2.txt";
+//     char *a = "2";//"Mint";
+//     int o_n = 4;
+//     char *opts[] = {"Vanilla","Mint","Strawberry","Chocolate"};
+//     // printf("%s\n",p0.options[0]);
+//
+//     prompt_t p1 = create_prompt(art,q,a,o_n,opts);
+//
+//     for (int j =0;j<o_n;j++) {
+//         printf("%s\n",p1.options[j]);
+//     }
+//
+//     play_prompt(p1);
+//
+//     return 0;
+// }
