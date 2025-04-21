@@ -1,0 +1,9 @@
+
+
+#Seperation of logic and Rendering
+- Logic moves us through the game loop. Prompts for user input, recieves input, and moves player to next stage.
+
+
+# Menu
+
+# Renderer?
