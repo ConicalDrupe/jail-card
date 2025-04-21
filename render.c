@@ -1,8 +1,5 @@
 #include <string.h>
 #include <stdio.h>
-// Initialize Card paths in global state
-//
-// char two_art[7][5] = {"+-----+", "|     |", "|     |", "|     |", "+-----+"};
 
 typedef struct Card {
     int value;
@@ -10,17 +7,7 @@ typedef struct Card {
     char art[6][8];
 } card_t;
 
-// 1
-// 2
-// 3
-// 4
-// 5
-//
-// A
-// K
-// Q
-// J
-
+// Essentially a card Factory
 card_t createCard(char name) {
     card_t card;
 
@@ -121,7 +108,7 @@ card_t createCard(char name) {
         return card;
     }
     else {
-        printf("Not valid char%c\n",name);
+        printf("Not valid char %c\n",name);
     }
 
     return card;
@@ -135,17 +122,7 @@ typedef struct Hand {
     int seed;
 } hand_t;
 
-void renderCards(card_t cards_arry[], int num_of_cards) {
-    char Canvas[1600]; //17x70 , round up to, go 80x60 = 5200, or 80x(length of longest artwork) = 80x20 = 1600
-    //
-    int card_height = 6; //card height
-    int card_width = 7;
-    int line_numbers = card_height + 2; // 2 or number options [1] [2] [3] [4]
-
-    int num_spaces = num_of_cards-1;
-
-    // width of each card, plus 1 space between each
-    int max_width = card_width*num_of_cards + num_of_cards-1;
+void renderCards(card_t cards_arry[], int num_of_cards, int prompt_flag) {
 
     // Iterate over lines
     for (int ln=0;ln<6;ln++) {
@@ -156,23 +133,28 @@ void renderCards(card_t cards_arry[], int num_of_cards) {
         }
         printf("\n");
     }
+    // Here is the user inputs on display (could depend on user controls)
+    if (prompt_flag ==1) {
+        for (int car=0; car<num_of_cards; car++) {
+            printf("  [%d]   ",car+1);
+        }
+        printf("\n");
+    }
 
-    // for (int i=0;i< num_spaces;i++) {
-    //     strcat(Canvas,"+-----+");
-    //     strcat(Canvas," ");
-    // }
-    // strcat(Canvas,"\n");
 }
 
 
 int main()
 {
-    card_t two = createCard('2');
-    card_t ace = createCard('A');
+    card_t Two = createCard('2');
+    card_t Ace = createCard('A');
+    card_t Queen = createCard('Q');
+    card_t King = createCard('K');
+    card_t Jack = createCard('J');
     // for (int i=0;i< 6;i++) {
     //     printf("%s\n",two.art[i]);
     // }
-    card_t current_cards[2] = {two,ace};
-    renderCards(current_cards,2);
+    card_t current_cards[5] = {Two,Ace,Queen,King,Jack};
+    renderCards(current_cards,5,1);
     return 0;
 }
