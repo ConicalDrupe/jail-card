@@ -126,6 +126,12 @@ card_t createCard(int value) {
     return card;
 }
 
+card_t generateCard(void) {
+    int rand_num = rand() % 8;
+    card_t new_card = createCard(rand_num);
+    return new_card;
+}
+
 void renderCard(card_t,int offset){
 }
 
