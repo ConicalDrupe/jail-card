@@ -1,6 +1,13 @@
 #include <string.h>
 #include <stdio.h>
 
+// User for O(n) time complexity
+char * mystrcat(char* dest, char* src) {
+    while (*dest) dest++;
+    while (*dest++ = *src++);
+    return --dest
+}
+
 typedef struct Card {
     int value;
     char name;

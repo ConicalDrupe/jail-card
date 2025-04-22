@@ -23,3 +23,9 @@ int print_art(char *path) {
     fclose(fp);
     return 0;
 }
+
+char * mystrcat(char* dest, char* src) {
+    while (*dest) dest++;
+    while (*dest++ = *src++);
+    return --dest
+}
