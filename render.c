@@ -1,5 +1,6 @@
 #include <string.h>
 #include <stdio.h>
+#include "card.c"
 
 // User for O(n) time complexity
 char * mystrcat(char* dest, char* src) {
@@ -8,150 +9,42 @@ char * mystrcat(char* dest, char* src) {
     return --dest
 }
 
-typedef struct Card {
-    int value;
-    char name;
-    char art[6][8];
-} card_t;
+char [4][5] renderCard(card_id){
+    char card_img[4][5];
+    strcpy(card_img[0],"*---*");
+    strcpy(card_img[2],"|   |");
+    strcpy(card_img[3],"*---*");
 
-// Essentially a card Factory
-card_t createCard(int value) {
-    card_t card;
-
-    if (value==1) {
-        card.value = 1;
-        card.name = '2';
-
-        strcpy(card.art[0],"+-----+");
-        strcpy(card.art[1],"|2    |");
-        strcpy(card.art[2],"|     |");
-        strcpy(card.art[3],"|     |");
-        strcpy(card.art[4],"|    2|");
-        strcpy(card.art[5],"+-----+");
-        return card;
-    }
-    else if (value==2) {
-        card.value = 2;
-        card.name = '3';
-
-        strcpy(card.art[0],"+-----+");
-        strcpy(card.art[1],"|3    |");
-        strcpy(card.art[2],"|     |");
-        strcpy(card.art[3],"|     |");
-        strcpy(card.art[4],"|    3|");
-        strcpy(card.art[5],"+-----+");
-        return card;
-    }
-    else if (value==3) {
-        card.value = 3;
-        card.name = '4';
-
-        strcpy(card.art[0],"+-----+");
-        strcpy(card.art[1],"|4    |");
-        strcpy(card.art[2],"|     |");
-        strcpy(card.art[3],"|     |");
-        strcpy(card.art[4],"|    4|");
-        strcpy(card.art[5],"+-----+");
-        return card;
-    }
-    else if (value==4) {
-        card.value = 4;
-        card.name = '5';
-
-        strcpy(card.art[0],"+-----+");
-        strcpy(card.art[1],"|5    |");
-        strcpy(card.art[2],"|     |");
-        strcpy(card.art[3],"|     |");
-        strcpy(card.art[4],"|    5|");
-        strcpy(card.art[5],"+-----+");
-        return card;
-    }
-    else if (value==0) {
-        card.value = 0;
-        card.name = 'A';
-
-        strcpy(card.art[0],"+-----+");
-        strcpy(card.art[1],"|A    |");
-        strcpy(card.art[2],"|     |");
-        strcpy(card.art[3],"|     |");
-        strcpy(card.art[4],"|    A|");
-        strcpy(card.art[5],"+-----+");
-        return card;
-    }
-    else if (value==5) {
-        card.value = 5;
-        card.name = 'J';
-
-        strcpy(card.art[0],"+-----+");
-        strcpy(card.art[1],"|J    |");
-        strcpy(card.art[2],"|     |");
-        strcpy(card.art[3],"|     |");
-        strcpy(card.art[4],"|    J|");
-        strcpy(card.art[5],"+-----+");
-        return card;
-    }
-    else if (value==6) {
-        card.value = 6;
-        card.name = 'Q';
-
-        strcpy(card.art[0],"+-----+");
-        strcpy(card.art[1],"|Q    |");
-        strcpy(card.art[2],"|     |");
-        strcpy(card.art[3],"|     |");
-        strcpy(card.art[4],"|    Q|");
-        strcpy(card.art[5],"+-----+");
-        return card;
-    }
-    else if (value==7) {
-        card.value = 7;
-        card.name = 'K';
-
-        strcpy(card.art[0],"+-----+");
-        strcpy(card.art[1],"|K    |");
-        strcpy(card.art[2],"|     |");
-        strcpy(card.art[3],"|     |");
-        strcpy(card.art[4],"|    K|");
-        strcpy(card.art[5],"+-----+");
-        return card;
-    }
-    else if (value==100) {
-        card.value = 0;
-        card.name = '?';
-
-        strcpy(card.art[0],"  ---  ");
-        strcpy(card.art[1],"|     |");
-        strcpy(card.art[2],"   ?   ");
-        strcpy(card.art[3],"       ");
-        strcpy(card.art[4],"|     |");
-        strcpy(card.art[5],"  ---  ");
-        // strcpy(card.art[0],"+-----+");
-        // strcpy(card.art[1],"|?    |");
-        // strcpy(card.art[2],"|     |");
-        // strcpy(card.art[3],"|     |");
-        // strcpy(card.art[4],"|    ?|");
-        // strcpy(card.art[5],"+-----+");
-        return card;
-    }
-    else {
-        printf("Not valid value map %d\n",value);
-    }
-
-    return card;
+    // SKIPS id=4 so we can count consecutive cards.
+    switch (card_id):
+        case 0:
+            strcpy(card_img[1],'| A |');
+            return card_img;
+        case 1:
+            strcpy(card_img[1],'| K |');
+            return card_img;
+        case 2:
+            strcpy(card_img[1],'| Q |');
+            return card_img;
+        case 3:
+            strcpy(card_img[1],'| J |');
+            return card_img;
+        case 5:
+            strcpy(card_img[1],'| 5 |');
+            return card_img;
+        case 6:
+            strcpy(card_img[1],'| 4 |');
+            return card_img;
+        case 7:
+            strcpy(card_img[1],'| 3 |');
+            return card_img;
+        case 8:
+            strcpy(card_img[1],'| 2 |');
+            return card_img;
+    default:
+        strcpy(card_img[1],'| ? |');
+        return card_img;
 }
-
-card_t generateCard(void) {
-    int rand_num = rand() % 8;
-    card_t new_card = createCard(rand_num);
-    return new_card;
-}
-
-void renderCard(card_t,int offset){
-}
-
-typedef struct Hand {   
-    // card_t[5] cards_arry;
-    int seed;
-} hand_t;
 
 void renderCards(card_t cards_arry[], int num_of_cards, int prompt_flag) {
     int unseen_card=0;
@@ -161,7 +54,8 @@ void renderCards(card_t cards_arry[], int num_of_cards, int prompt_flag) {
         // iterate over cards
         for (int i=0;i<num_of_cards;i++) {
             card_t current_card = cards_arry[i];
-                printf("%s ",current_card.art[ln]);
+                char art[4][5] = renderCard(current_card.id);
+                printf("%s ",art[ln]);
 
         }
         printf("\n");
