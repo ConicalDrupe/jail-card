@@ -111,12 +111,18 @@ card_t createCard(int value) {
         card.value = 0;
         card.name = '?';
 
-        strcpy(card.art[0],"+-----+");
-        strcpy(card.art[1],"|?    |");
-        strcpy(card.art[2],"|     |");
-        strcpy(card.art[3],"|     |");
-        strcpy(card.art[4],"|    ?|");
-        strcpy(card.art[5],"+-----+");
+        strcpy(card.art[0],"  ---  ");
+        strcpy(card.art[1],"|     |");
+        strcpy(card.art[2],"   ?   ");
+        strcpy(card.art[3],"       ");
+        strcpy(card.art[4],"|     |");
+        strcpy(card.art[5],"  ---  ");
+        // strcpy(card.art[0],"+-----+");
+        // strcpy(card.art[1],"|?    |");
+        // strcpy(card.art[2],"|     |");
+        // strcpy(card.art[3],"|     |");
+        // strcpy(card.art[4],"|    ?|");
+        // strcpy(card.art[5],"+-----+");
         return card;
     }
     else {
@@ -141,13 +147,15 @@ typedef struct Hand {
 } hand_t;
 
 void renderCards(card_t cards_arry[], int num_of_cards, int prompt_flag) {
+    int unseen_card=0;
 
     // Iterate over lines
     for (int ln=0;ln<6;ln++) {
         // iterate over cards
         for (int i=0;i<num_of_cards;i++) {
             card_t current_card = cards_arry[i];
-            printf("%s ",current_card.art[ln]);
+                printf("%s ",current_card.art[ln]);
+
         }
         printf("\n");
     }
