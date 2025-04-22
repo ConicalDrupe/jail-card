@@ -1,7 +1,22 @@
 #include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
 #include "level.c"
 #include "prompt.c"
 #include "render.c"
+
+
+typedef struct Player {
+    card_t inventory[5];
+    int num_cards;
+    unsigned int seed;
+} player_t;
+
+// const unsigned int new_seed = time(NULL);
+// Initialize Player
+player_t player;// = {.seed = new_seed};
+// Setting random seed
+// srand(player.seed);
 
 
 int main(int argc, char *argv[])
@@ -68,6 +83,15 @@ int main(int argc, char *argv[])
         }
     };
 
+
+    // Player gains a card and coins
+    // Placeholder
+    card_t first_card = generateCard();
+    player.inventory[0] = first_card;
+    player.num_cards++;
+    //
+
+
     // Game 1
     // What is the proper abstraction.
     /*
@@ -83,11 +107,6 @@ int main(int argc, char *argv[])
     */
 
     // 1.a) Generate hand and render
-    card_t generateCard(void) {
-        int rand_num = rand() % 8;
-        card_t new_card = createCard(rand_num);
-        return new_card;
-    }
 
     card_t hand[5];
     for (int i=0;i<5;i++){
@@ -108,10 +127,11 @@ int main(int argc, char *argv[])
     //render player inventory
     //player.n_cards | type: cards_t []
     //player.cards[]
-    //for (inti=0;i<player.n_cards;i++){
-    //printf("Inventory:\n")
-    //renderCards(player.cards,n_cards);
-    //}
+    printf("Inventory:\n");
+    // for (int i=0;i<player.num_cards;i++){
+    renderCards(player.inventory,player.num_cards,0);
+    // }
+    printf("\n");
 
     // Prompt player to call or fold
     // call -10 coins, fold (lose a card)
@@ -120,9 +140,6 @@ int main(int argc, char *argv[])
     printf("\t[f]old (forfiet and -20 coins or a card)\n");
     scanf("%s",c_buffer);
 
-    while (1) {
-
-    }
 
 
     return 0;
