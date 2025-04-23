@@ -69,8 +69,6 @@ char *mystrcat(char* dest, char* src) {
 // Needs to be redone for the board
 // Left pad
 void renderCards(card_t cards_arry[], int num_of_cards, int prompt_flag) {
-    int unseen_card=0;
-    int padding = 0;
 
     // Iterate over lines
     for (int ln=0;ln<4;ln++) {
@@ -137,12 +135,23 @@ void renderCards(card_t cards_arry[], int num_of_cards, int prompt_flag) {
         }
         printf("\n");
     }
-    // Here is the user inputs on display (could depend on user controls)
-    if (prompt_flag ==1) {
-        for (int car=0; car<num_of_cards; car++) {
-            printf("  [%d]   ",car+1);
-        }
-        printf("\n");
-    }
 
+}
+
+void renderGame(player_t player,player_t opponent,card_t board_cards[5]) {
+
+    int opp_len = opponent.num_cards;
+    int plr_len = player.num_cards;
+    // Need to correct padding
+    printf("%s",twoCardPad);
+    printf("%s","Opponent Hand:\n");
+    renderCards(opponent.inventory,opp_len,0);
+    printf("\n");
+    renderCards(board_cards,5,0);
+
+    printf("\n");
+    // Need to correct padding
+    printf("%s",twoCardPad);
+    printf("%s","Your Hand:\n");
+    renderCards(player.inventory,plr_len,1);
 }
