@@ -68,7 +68,7 @@ char *mystrcat(char* dest, char* src) {
 
 // Needs to be redone for the board
 // Left pad
-void renderCards(card_t cards_arry[], int num_of_cards, int prompt_flag) {
+void renderCards(card_t cards_arry[], int num_of_cards) {
 
     // Iterate over lines
     for (int ln=0;ln<4;ln++) {
@@ -138,7 +138,7 @@ void renderCards(card_t cards_arry[], int num_of_cards, int prompt_flag) {
 
 }
 
-void renderGame(player_t player,player_t opponent,card_t board_cards[5]) {
+void renderGame(player_t player,player_t opponent,card_t board_cards[5],int options_flag) {
 
     int opp_len = opponent.num_cards;
     int plr_len = player.num_cards;
@@ -146,13 +146,37 @@ void renderGame(player_t player,player_t opponent,card_t board_cards[5]) {
     // printf("%s",twoCardPad);
     printf("%s","                                 ");
     printf("%s","Enemy Hand\n");
-    renderCards(opponent.inventory,opp_len,0);
+    renderCards(opponent.inventory,opp_len);
     printf("\n");
-    renderCards(board_cards,5,0);
+    renderCards(board_cards,5);
 
     printf("\n");
     // Need to correct padding- 34 spaces
     printf("%s","                                  ");
     printf("%s","Your Hand\n");
-    renderCards(player.inventory,plr_len,1);
+    renderCards(player.inventory,plr_len);
+
+    printf("\n");
+
+    switch (options_flag) {
+        case 2:
+            // padding for options
+            // padding for description
+            printf("%s",lpad_two_opts);
+            printf("[c]all%s[f]old\n",between_two_opts);
+            printf("%s",sub_lpad_two_opts);
+            printf("(-5 coins)%s(-1 card)",sub_between_two_opts);
+            printf("\n");
+            break;
+        case 3:
+            printf("%s",lpad_three_opts);
+            printf("[c]all%s[p]lay%s[f]old\n",between_three_opts,between_three_opts);
+            printf("%s",sub_lpad_three_opts);
+            printf("(-5 coins)%s(play card)%s(-1 card)",sub_between_three_opts,sub_between_three_opts);
+            printf("\n");
+            break;
+        default:
+            printf("[renderGame] %d is not a valid options_flag",options_flag);
+            break;
+    }
 }

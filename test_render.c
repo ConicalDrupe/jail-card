@@ -28,7 +28,7 @@ int main()
     board[3] = generateCard();
     board[4] = generateCard();
 
-    renderGame(player,mystery_man,board);
+    renderGame(player,mystery_man,board,3);
 
     // char ace_art[4][5] = {"*---*","| A |","|   |","*---*"};
     // printf(" %s ",ace_art[0]);
