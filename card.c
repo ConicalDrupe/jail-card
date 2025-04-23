@@ -7,6 +7,12 @@ typedef struct Card {
     char name;
 } card_t;
 
+typedef struct Player {
+    card_t inventory[5];
+    int num_cards;
+    unsigned int seed;
+} player_t;
+
 char returnCardName(int card_id) {
     switch (card_id) {
         case 0:
