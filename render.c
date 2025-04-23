@@ -142,16 +142,17 @@ void renderGame(player_t player,player_t opponent,card_t board_cards[5]) {
 
     int opp_len = opponent.num_cards;
     int plr_len = player.num_cards;
-    // Need to correct padding
-    printf("%s",twoCardPad);
-    printf("%s","Opponent Hand:\n");
+    // Need to correct padding - 33 spaces
+    // printf("%s",twoCardPad);
+    printf("%s","                                 ");
+    printf("%s","Enemy Hand\n");
     renderCards(opponent.inventory,opp_len,0);
     printf("\n");
     renderCards(board_cards,5,0);
 
     printf("\n");
-    // Need to correct padding
-    printf("%s",twoCardPad);
-    printf("%s","Your Hand:\n");
+    // Need to correct padding- 34 spaces
+    printf("%s","                                  ");
+    printf("%s","Your Hand\n");
     renderCards(player.inventory,plr_len,1);
 }
