@@ -6,7 +6,7 @@ typedef struct Card {
 } card_t;
 
 char returnCardName(int card_id) {
-    switch (card_id):
+    switch (card_id) {
         case 0:
             return 'A';
         case 1:
@@ -23,13 +23,16 @@ char returnCardName(int card_id) {
             return '3';
         case 7:
             return '2';
+        case 100:
+            return '?';
+        }
 }
 
 // Essentially a card Factory
 card_t createCard(int gen_value) {
     card_t card;
 
-    switch (gen_value):
+    switch (gen_value) {
         case 0:
             card.id = 7;
             card.name = '2';
@@ -66,6 +69,7 @@ card_t createCard(int gen_value) {
         card.id = 100;
         card.name = '?';
         return card;
+}
 }
 
 card_t generateCard(void) {
