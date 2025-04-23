@@ -70,38 +70,36 @@ char *mystrcat(char* dest, char* src) {
 // Left pad
 void renderCards(card_t cards_arry[], int num_of_cards, int prompt_flag) {
     int unseen_card=0;
+    int padding = 0;
 
     // Iterate over lines
     for (int ln=0;ln<4;ln++) {
-        // iterate over cards
+        // Padding then iterate over cards
+
+        switch (num_of_cards) {
+            case 1:
+                printf("%s",oneCardPad);
+                break;
+            case 2:
+                printf("%s",twoCardPad);
+                break;
+            case 3:
+                printf("%s",threeCardPad);
+                break;
+            case 4:
+                printf("%s",fourCardPad);
+                break;
+            case 5:
+                printf("%s",fiveCardPad);
+                break;
+            default:
+                printf("\n\n\n\n");
+                break;
+        }
+
         for (int i=0;i<num_of_cards;i++) {
             card_t current_card = cards_arry[i];
 
-            // if padding, print padding here
-            // printf("%s",middle_pad)
-            // printf("%s",oponent_pad)
-            // printf("%s",player_pad)
-            // printf("%s",options_pad)
-            switch (num_of_cards) {
-                case 1:
-                    printf("%s",oneCardPad);
-                    break;
-                case 2:
-                    printf("%s",twoCardPad);
-                    break;
-                case 3:
-                    printf("%s",threeCardPad);
-                    break;
-                case 4:
-                    printf("%s",fourCardPad);
-                    break;
-                case 5:
-                    printf("%s",fiveCardPad);
-                    break;
-                default:
-                    printf("\n\n\n\n");
-                    break;
-            }
 
             // Print card line by line
             switch (current_card.name) {
