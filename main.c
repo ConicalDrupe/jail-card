@@ -1,16 +1,21 @@
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
-#include "level.c"
+#include "card.c"
+#include "player.c"
 #include "prompt.c"
 #include "render.c"
 
-
-typedef struct Player {
-    card_t inventory[5];
-    int num_cards;
-    unsigned int seed;
-} player_t;
+typedef enum {
+    INTRO,
+    LEVEL1,
+    LEVEL2,
+    SHOP,
+    SLEEP,
+    DEAD,
+    FREEPLAY,
+    BOSS
+} State;
 
 // const unsigned int new_seed = time(NULL);
 // Initialize Player

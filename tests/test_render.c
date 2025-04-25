@@ -1,4 +1,6 @@
-#include "render.c"
+#include "../card.c"
+#include "../player.c"
+#include "../render.c"
 #include <stdio.h>
 
 

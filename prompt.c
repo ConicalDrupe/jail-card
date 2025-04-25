@@ -6,7 +6,6 @@
 
 typedef struct prompt {
     char *question;
-    char *art_path;
     char *answer; //correct answer
     int opt_n; //number of options
     char *options[4]; //array of 4 pointers, that each point to the beggining of an string (array of chars)
@@ -16,7 +15,6 @@ prompt_t create_prompt(char *art_path, char *question, char *answer, int opt_n,c
     // Danger here if options is less than opt_n
 
     prompt_t new_prompt;
-    new_prompt.art_path = art_path;
     new_prompt.question = question;
     new_prompt.answer = answer;
     new_prompt.opt_n = opt_n;
@@ -30,11 +28,6 @@ prompt_t create_prompt(char *art_path, char *question, char *answer, int opt_n,c
 
 void play_prompt(prompt_t prompt) {
     int number_of_attempts = 0;
-
-    // if (prompt.art_path != NULL) {
-    //     print_art(prompt.art_path);
-    //     printf("\n");
-    // }
 
     do {
     // Print Question and Options

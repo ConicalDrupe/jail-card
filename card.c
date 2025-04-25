@@ -1,82 +1,84 @@
 #pragma once
 
 #include <stdlib.h>
+#include <stdio.h>
+
+
+typedef enum {
+    TWO=0,
+    THREE=1,
+    FOUR=2,
+    FIVE=3,
+    JACK=4,
+    QUEEN=5,
+    KING=6,
+    ACE=7,
+    UNKNOWN=100,
+
+} CardType;
 
 typedef struct Card {
-    int id;
+    CardType type;
+    int value;
     char name;
 } card_t;
 
-typedef struct Player {
-    card_t inventory[5];
-    int num_cards;
-    unsigned int seed;
-} player_t;
 
-char returnCardName(int card_id) {
-    switch (card_id) {
-        case 0:
-            return 'A';
-        case 1:
-            return 'K';
-        case 2:
-            return 'Q';
-        case 3:
-            return 'J';
-        case 4:
-            return '5';
-        case 5:
-            return '4';
-        case 6:
-            return '3';
-        case 7:
-            return '2';
-        case 100:
-            return '?';
-        }
-}
 
 // Essentially a card Factory
-card_t createCard(int gen_value) {
+// Takes 1-14 as values, or 100 for unknown card
+card_t createCard(CardType type) {
     card_t card;
 
-    switch (gen_value) {
-        case 0:
-            card.id = 7;
+    switch (type) {
+        case TWO:
+            card.type = TWO;
+            card.value = 2;
             card.name = '2';
             return card;
-        case 1:
-            card.id = 6;
+        case THREE:
+            card.type = THREE;
+            card.value = 3;
             card.name = '3';
             return card;
-        case 2:
-            card.id = 5;
+        case FOUR:
+            card.type = FOUR;
+            card.value = 4;
             card.name = '4';
             return card;
-        case 3:
-            card.id = 4;
+        case FIVE:
+            card.type = FIVE;
+            card.value = 5;
             card.name = '5';
             return card;
-        case 4:
-            card.id = 3;
+        case JACK:
+            card.type = JACK;
+            card.value = 11;
             card.name = 'J';
             return card;
-        case 5:
-            card.id = 2;
+        case QUEEN:
+            card.type = QUEEN;
+            card.value = 12;
             card.name = 'Q';
             return card;
-        case 6:
-            card.id = 1;
+        case KING:
+            card.type = KING;
+            card.value = 13;
             card.name = 'K';
             return card;
-        case 7:
-            card.id = 0;
+        case ACE:
+            card.type = ACE;
+            card.value = 14;
             card.name = 'A';
             return card;
-    default:
-        card.id = 100;
-        card.name = '?';
-        return card;
+        case UNKNOWN:
+            card.type = UNKNOWN;
+            card.value = 0;
+            card.name = '?';
+            return card;
+        default:
+            printf("Unknown CardType %d",type);
+            return card;
 }
 }
 

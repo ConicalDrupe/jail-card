@@ -43,7 +43,7 @@ static char fourCardPad[28] = "                           ";
 static char fiveCardPad[25] = "                        ";
 
 // Left padding for game board option rendering. 2 options (call or fold), 3 options (call, play or fold)
-// 28 white spaces, then 9 between call/fold. 26 for (-5 coins), then 6 spaces to (-1 card)
+// 28 white spaces, then 9 between call/fold. 26 for (-5 chips), then 6 spaces to (-1 card)
 //call,fold
 static char lpad_two_opts[29] = "                            ";
 static char between_two_opts[10] = "         ";
@@ -55,7 +55,7 @@ static char between_three_opts[8] = "       ";
 static char sub_lpad_three_opts[21] = "                    ";
 static char sub_between_three_opts[4] = "   ";
 // 22 white spaces, then 7 between each
-// 20 white spaces til (-5 coins), then 3 till each (play card) and (-1 card)
+// 20 white spaces til (-5 chips), then 3 till each (play card) and (-1 card)
 
 
 // User for O(n) time complexity
@@ -100,32 +100,32 @@ void renderCards(card_t cards_arry[], int num_of_cards) {
 
 
             // Print card line by line
-            switch (current_card.name) {
-                case 'A':
+            switch (current_card.type) {
+                case ACE:
                     printf("%s ",ace_art[ln]);
                     break;
-                case 'K':
+                case KING:
                     printf("%s ",king_art[ln]);
                     break;
-                case 'Q':
+                case QUEEN:
                     printf("%s ",queen_art[ln]);
                     break;
-                case 'J':
+                case JACK:
                     printf("%s ",jack_art[ln]);
                     break;
-                case '5':
+                case FIVE:
                     printf("%s ",five_art[ln]);
                     break;
-                case '4':
+                case FOUR:
                     printf("%s ",four_art[ln]);
                     break;
-                case '3':
+                case THREE:
                     printf("%s ",three_art[ln]);
                     break;
-                case '2':
+                case TWO:
                     printf("%s ",two_art[ln]);
                     break;
-                case '?':
+                case UNKNOWN:
                     printf("%s ",unkn_art[ln]);
                     break;
                 default:
@@ -165,14 +165,18 @@ void renderGame(player_t player,player_t opponent,card_t board_cards[5],int opti
             printf("%s",lpad_two_opts);
             printf("[c]all%s[f]old\n",between_two_opts);
             printf("%s",sub_lpad_two_opts);
-            printf("(-5 coins)%s(-1 card)",sub_between_two_opts);
+            printf("(-5 chips)%s(-1 card)",sub_between_two_opts);
+            printf("\n");
+            printf("chips: %d",player.chips);
             printf("\n");
             break;
         case 3:
             printf("%s",lpad_three_opts);
             printf("[c]all%s[p]lay%s[f]old\n",between_three_opts,between_three_opts);
             printf("%s",sub_lpad_three_opts);
-            printf("(-5 coins)%s(play card)%s(-1 card)",sub_between_three_opts,sub_between_three_opts);
+            printf("(-5 chips)%s(play card)%s(-1 card)",sub_between_three_opts,sub_between_three_opts);
+            printf("\n");
+            printf("chips: %d",player.chips);
             printf("\n");
             break;
         default:
