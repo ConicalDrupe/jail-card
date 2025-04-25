@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
     char *press_enter_1;
     char *intro_l1 = "You wake up to the sensation of cold and wet concrete.\nAs you collect yourself, you note this small concrete room is filled hot stale air.\nThere is no exit, only a small window covered in metal bars.\nIt seems you are in a jail cell, and boy is it dank.\n";
     char *prompt_l1 = "Press Enter to standup.\n";
-    level_t one = new_level("levels/big_bricks_with_bars_2.txt",intro_l1,prompt_l1,1);
+    // level_t one = new_level("levels/big_bricks_with_bars_2.txt",intro_l1,prompt_l1,1);
 
     printf("\n%s\n",intro_l1);
     int status = print_art(one.ascii_path);
@@ -91,9 +91,13 @@ int main(int argc, char *argv[])
 
     // Player gains a card and coins
     // Placeholder
-    card_t first_card = generateCard();
-    player.inventory[0] = first_card;
+    int rand1 = rand() % 14;
+    int rand2 = rand() % 14;
+    player.inventory[0] = createCard(rand1);
     player.num_cards++;
+    player.inventory[1] = createCard(rand2);
+    player.num_cards++;
+    player.chips=10;
     //
 
 
@@ -111,41 +115,12 @@ int main(int argc, char *argv[])
      9) if no cards left, player dies
     */
 
-    // 1.a) Generate hand and render
-
-    card_t hand[5];
-    for (int i=0;i<5;i++){
-        hand[i] = generateCard();
-    }
-
-
-    // 1.b) Render Hand, only showing 3
-    card_t flop[5];
-    flop[0] = hand[0];
-    flop[1] = hand[1];
-    flop[2] = hand[2];
-    flop[3] = createCard(100);
-    flop[4] = createCard(100);
-    renderCards(flop,5,0);
-
-    printf("\n");
-    //render player inventory
-    //player.n_cards | type: cards_t []
-    //player.cards[]
-    printf("Inventory:\n");
-    // for (int i=0;i<player.num_cards;i++){
-    renderCards(player.inventory,player.num_cards,0);
-    // }
-    printf("\n");
-
     // Prompt player to call or fold
     // call -10 coins, fold (lose a card)
     char c_buffer[2];
     printf("\t[c]all (-5 coins)\n");
     printf("\t[f]old (forfiet and -20 coins or a card)\n");
     scanf("%s",c_buffer);
-
-
 
     return 0;
 }
