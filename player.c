@@ -5,14 +5,21 @@ typedef struct Card card_t;
 
 typedef struct Player {
     card_t inventory[5];
+    char name[10];
     int chips;
     int num_cards;
     unsigned int seed;
 } player_t;
 
+// MUST INSTATIATE PLAYER, else we get bad values for chips/num_cards by default.
+void createPlayer(char[10] name) {
+    player_t player = {.name=name};
+    return player;
+}
+
 void addCard(player_t player,card_t card){
-    if (num_cards < 5) {
-        player.inventory[num_cards] = card;
+    if (player.num_cards < 5) {
+        player.inventory[player.num_cards] = card;
         player.num_cards++;
     }
     else {
@@ -21,18 +28,28 @@ void addCard(player_t player,card_t card){
 }
 
 void removeCard(player_t player) {
-    if (player.num_cards > 1) {
-        int idx_to_remove = rand() % num_cards;
-        if (idx_to_remove == num_cards-1) {
-            player.inventory[num_cards-1] = {0};
+    int n = player.num_cards;
+    if (n > 1) {
+        int idx_to_remove = rand() % n;
+        if (idx_to_remove == n-1) {
+            // card_t *ptr_to_card = &player.inventory[n-1];
+            // *ptr_to_card = createCard(100);//{0};
+            player.inventory[n-1] = createCard(100);
             player.num_cards--;
         }
         else {
+            // If not the last card in inventory, swap with last card & clear marked card.
+            card_t *temp = &player.inventory[n-1]; //last card in inventory
             card_t *ptr_to_card = &player.inventory[idx_to_remove];
-            ptr_to_card = player.inventory[num_cards-1];
-            player.inventory[num_cards-1] = {0}; //removing dulpicate card
+            *ptr_to_card = *temp;
+            player.inventory[n-1] = createCard(100); //removing dulpicate card
+            // *temp = createCard(100);
             player.num_cards--;
         }
+    }
+    else {
+        printf("%s has no cards to remove\n",player.name);
+        printf("Player has %d cards\n",player.num_cards);
     }
 };
 
