@@ -1,21 +1,20 @@
 #pragma once
-#include "card.c"
 
 typedef struct Card card_t;
 
 typedef struct Player {
     card_t inventory[5];
-    char *name;
+    char name[16];
     int chips;
     int num_cards;
     unsigned int seed;
 } player_t;
 
-// MUST INSTATIATE PLAYER, else we get bad values for chips/num_cards by default.
-player_t createPlayer(char *name) {
-    player_t player = {.name = name};
-    return player;
-}
+// // MUST INSTATIATE PLAYER, else we get bad values for chips/num_cards by default.
+// player_t createPlayer(char name[15]) {
+//     player_t player = {.name = name};
+//     return player;
+// }
 
 void addCard(player_t *player,card_t card){
     if (player->num_cards < 5) {
@@ -58,15 +57,15 @@ void removeCard(player_t *player) {
     }
 };
 
-void addChips(player_t player, int amount) {
-    player.chips += amount;
+void addChips(player_t *player, int amount) {
+    player->chips += amount;
 }
 
-void removeChips(player_t player, int amount){
-    if (player.chips > amount) {
-        player.chips -= amount;
+void removeChips(player_t *player, int amount){
+    if (player->chips > amount) {
+        player->chips -= amount;
     }
     else {
-        player.chips = 0;
+        player->chips = 0;
     }
 }
