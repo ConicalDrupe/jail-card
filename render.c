@@ -58,12 +58,12 @@ static char sub_between_three_opts[4] = "   ";
 // 20 white spaces til (-5 chips), then 3 till each (play card) and (-1 card)
 
 
-// User for O(n) time complexity
-char *mystrcat(char* dest, char* src) {
-    while (*dest) dest++;
-    while (*dest++ = *src++);
-    return --dest;
-}
+// // User for O(n) time complexity
+// char *mystrcat(char* dest, char* src) {
+//     while (*dest) dest++;
+//     while (*dest++ = *src++);
+//     return --dest;
+// }
 
 
 // Needs to be redone for the board
