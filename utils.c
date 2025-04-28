@@ -17,7 +17,6 @@ int print_art(char *path) {
     while(fgets(buffer,sizeof(buffer),fp) != NULL){
         printf("%s",buffer);
         // HAL_UART_Transmit(artaddy,buffer,sizeof(buffer));
-        
     }
 
     fclose(fp);
@@ -27,5 +26,5 @@ int print_art(char *path) {
 char * mystrcat(char* dest, char* src) {
     while (*dest) dest++;
     while (*dest++ = *src++);
-    return --dest
+    return --dest;
 }
